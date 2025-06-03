@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="include-banner"></div>
+    <div id="include-customer"></div>
+    <div id="include-ourProduct"></div>
+
+    <script>
+      async function includeHTML(file, elementId) {
+        try {
+          // Get the target element
+          const element = document.getElementById(elementId);
+          if (!element) {
+            throw new Error(`Element with ID ${elementId} not found`);
+          }
+          element.innerHTML = "<p>Loading...</p>"; // Show loading state
+
+          // Fetch and insert HTML content
+          const response = await fetch(file);
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${file}: ${response.statusText}`);
+          }
+          const htmlContent = await response.text();
+          element.innerHTML = htmlContent;
+
+          // Extract and execute inline <script> tags
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlContent, "text/html");
+          const scripts = doc.querySelectorAll("script");
+          scripts.forEach((script) => {
+            const newScript = document.createElement("script");
+            if (script.src) {
+              newScript.src = script.src; // Handle external scripts referenced in HTML
+            } else {
+              newScript.textContent = script.textContent; // Handle inline scripts
+            }
+            document.body.appendChild(newScript);
+          });
+        } catch (error) {
+          console.error(`Error including ${file}:`, error);
+          document.getElementById(elementId).innerHTML =
+            "<p>Error loading content</p>";
+        }
+      }
+
+      // Load components
+      includeHTML("./components/banner.html", "include-banner");
+      includeHTML("./components/customer.html", "include-customer");
+      includeHTML("./components/ourProduct.html", "include-ourProduct");
+    </script>
+  </body>
+</html>

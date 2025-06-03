@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/customer.css" />
+  </head>
+  <body>
+    <div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin-top: 5%;
+        "
+      >
+        <span class="customer__name"> BRANDS </span>
+        <h1 class="customer__question">Where Quality Meets Elegance</h1>
+        <p class="customer__describe">
+          Discover beloved brands that bring comfort, elegance, and effortless
+          summer style — just in time for sunshine season.
+        </p>
+      </div>
+      <div class="customer__grid-container">
+        <div>
+          <img
+            src="../assets/img/br1.jpg"
+            width="100%"
+            height="100%"
+            class="item"
+          />
+        </div>
+        <div>
+          <img
+            src="../assets/img/br2.jpg"
+            width="100%"
+            height="100%"
+            class="item"
+          />
+        </div>
+        <div>
+          <img
+            src="../assets/img/br3.jpg"
+            width="100%"
+            height="100%"
+            class="item"
+          />
+        </div>
+        <div>
+          <img
+            src="../assets/img/br4.jpg"
+            width="100%"
+            height="100%"
+            class="item"
+          />
+        </div>
+        <div>
+          <img
+            src="../assets/img/br5.jpg"
+            width="100%"
+            height="100%"
+            class="item"
+          />
+        </div>
+        <div>
+          <img
+            src="../assets/img/br6.jpg"
+            width="100%"
+            height="100%"
+            class="item"
+          />
+        </div>
+      </div>
+
+      <div class="gallery gallery__grid-container">
+        <div class="card gallery__grid-item1">
+          <img src="../../assets/img/cl1.jpg" alt="1" />
+          <div class="gallery__footer">
+            <h3>Best seller</h3>
+            <p>21 products</p>
+          </div>
+          <button class="gallery__overlay-button overlay">
+            Show Now
+            <i class="fa-solid fa-arrow-right icon"></i>
+          </button>
+        </div>
+        <div class="card gallery__grid-item2">
+          <img src="../../assets/img/banner_12.jpg" alt="2" />
+          <div class="gallery__footer">
+            <h3>Skirts</h3>
+            <p>30 products</p>
+          </div>
+          <!-- <div class="overlay"> -->
+          <button class="gallery__overlay-button overlay">
+            Show Now
+            <i class="fa-solid fa-arrow-right icon"></i>
+          </button>
+          <!-- </div> -->
+        </div>
+        <div class="card gallery__grid-item3">
+          <img src="../../assets/img/banner_13.jpg" alt="3" />
+          <div class="gallery__footer">
+            <h3>Bottoms</h3>
+            <p>25 products</p>
+          </div>
+          <button class="gallery__overlay-button overlay">
+            Show Now
+            <i class="fa-solid fa-arrow-right icon"></i>
+          </button>
+        </div>
+        <div class="card gallery__grid-item4">
+          <img src="../../assets/img/banner_15.jpg" alt="4" />
+          <div class="gallery__footer">
+            <h3>Accessories</h3>
+            <p>35 products</p>
+          </div>
+          <button class="gallery__overlay-button overlay">
+            Show Now
+            <i class="fa-solid fa-arrow-right icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="customer__collecton">
+        <div class="customer__collecton-grid">
+          <div class="customer__collecton-item1">
+            <p class="customer__collecton-name">
+              Celebrate Summer Beauty – A Gift of Style
+            </p>
+            <p class="customer__collecton-describe">
+              Discover elegant and effortless designs made to brighten your days
+              under the sun.
+            </p>
+          </div>
+          <div class="customer__collecton-item2">
+            <button class="customer__collecton-button">
+              Explore the Collection
+              <i class="fa-solid fa-arrow-right icon"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  function setupCardHoverEffect() {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card) => {
+      card.removeEventListener("mouseenter", card._hoverHandler); // remove cũ nếu có
+      if (window.innerWidth > 800) {
+        card._hoverHandler = () => {
+          cards.forEach((c) => c.classList.remove("active"));
+          card.classList.add("active");
+        };
+        card.addEventListener("mouseenter", card._hoverHandler);
+      }
+    });
+  }
+
+  window.addEventListener("resize", setupCardHoverEffect);
+  window.addEventListener("DOMContentLoaded", setupCardHoverEffect);
+</script>
