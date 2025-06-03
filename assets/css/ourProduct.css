@@ -85,3 +85,10 @@
 .s-button-prev.swiper-button-disabled {
   color: #b2b1b1 !important;
 }
+
+@media screen and (max-width: 800px) {
+  .swiper {
+    height: 100%;
+    margin: 0 16px;
+  }
+}

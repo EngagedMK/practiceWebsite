@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="specials__grid-container">
+      <div
+        class="specials__grid-item1"
+        style="display: flex; flex-direction: column; padding: 24px 30px"
+      >
+        <p class="specials__name">Specials</p>
+        <p class="specials__describe">
+          Discover Irresistible Offers Waiting to Be Yours
+        </p>
+        <p class="specials__describe-sub">
+          Harry up. the attactive offers are limited in quantity!
+        </p>
+
+        <div class="countdown-container">
+          <div class="time-box">
+            <div class="time-number" id="days">42</div>
+            <div class="time-label">DAYS</div>
+          </div>
+
+          <div class="separator">:</div>
+
+          <div class="time-box">
+            <div class="time-number" id="hours">00</div>
+            <div class="time-label">HOURS</div>
+          </div>
+
+          <div class="separator">:</div>
+
+          <div class="time-box">
+            <div class="time-number" id="minutes">01</div>
+            <div class="time-label">MINS</div>
+          </div>
+
+          <div class="separator">:</div>
+
+          <div class="time-box">
+            <div class="time-number" id="seconds">10</div>
+            <div class="time-label">SECS</div>
+          </div>
+        </div>
+
+        <div class="finished" id="finished">⏰ HẾT THỜI GIAN! ⏰</div>
+
+        <button class="specials__button">
+          Explore the Collection
+          <i class="fa-solid fa-arrow-right icon"></i>
+        </button>
+      </div>
+
+      <div class="specials__grid-item2">
+        <video
+          poster="../../assets/img/banner_6.jpg"
+          style="
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-position: 50% 50%;
+          "
+        >
+          <source
+            src="https://cdn.shopify.com/videos/c/o/v/06a253f53619450aa6076abb76a322ca.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  // Thời gian ban đầu (tính bằng giây)
+  let totalSeconds = 42 * 24 * 60 * 60 + 0 * 60 * 60 + 1 * 60 + 10; // 42 ngày, 0 giờ, 1 phút, 10 giây
+
+  function formatNumber(num) {
+    return num.toString().padStart(2, "0");
+  }
+
+  function updateDisplay() {
+    const days = Math.floor(totalSeconds / (24 * 60 * 60));
+    const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+    const seconds = totalSeconds % 60;
+
+    document.getElementById("days").textContent = formatNumber(days);
+    document.getElementById("hours").textContent = formatNumber(hours);
+    document.getElementById("minutes").textContent = formatNumber(minutes);
+    document.getElementById("seconds").textContent = formatNumber(seconds);
+  }
+
+  function countdown() {
+    if (totalSeconds <= 0) {
+      document.querySelector(".countdown-container").style.display = "none";
+      document.getElementById("finished").style.display = "block";
+      return;
+    }
+
+    updateDisplay();
+    totalSeconds--;
+    setTimeout(countdown, 1000);
+  }
+
+  // Bắt đầu đếm ngược ngay khi trang load
+  countdown();
+</script>
