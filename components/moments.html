@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/moments.css" />
+  </head>
+  <body>
+    <div class="moments__grid-container">
+      <div class="moments__left-panel">
+        <div class="moments__brand-text">MOMENTS IN MOTION</div>
+        <h1 class="moments__main-title">
+          Live in the Moments, Dress the Memories
+        </h1>
+
+        <div class="section" data-image="0">
+          <div class="section-header">
+            <div class="section-number">1</div>
+            <div class="section-title">Masterpiece</div>
+            <div class="toggle-btn">+</div>
+          </div>
+          <div class="section-content">
+            <p>
+              Every piece tells a story of craftsmanship and dedication. Our
+              masterpiece collection represents the pinnacle of fashion
+              artistry, where each garment is meticulously designed to capture
+              the essence of timeless beauty.
+            </p>
+          </div>
+        </div>
+
+        <div class="section active" data-image="1">
+          <div class="section-header">
+            <div class="section-number">2</div>
+            <div class="section-title active">Timelessness</div>
+            <div class="toggle-btn">-</div>
+          </div>
+          <div class="section-content active">
+            <p>
+              Trends fade, but grace endures. Discover skirts and dresses
+              designed to transcend seasons — effortless, enduring, and always
+              in style transcend seasons — effortless, enduring, and always in
+              style.
+            </p>
+          </div>
+        </div>
+
+        <div class="section" data-image="2">
+          <div class="section-header">
+            <div class="section-number">3</div>
+            <div class="section-title">Magnificence</div>
+            <div class="toggle-btn">+</div>
+          </div>
+          <div class="section-content">
+            <p>
+              Experience the extraordinary in every detail. Our magnificence
+              line celebrates bold elegance and sophisticated glamour, perfect
+              for those who dare to stand out and embrace their unique style.
+            </p>
+          </div>
+        </div>
+
+        <div class="section" data-image="3">
+          <div class="section-header">
+            <div class="section-number">4</div>
+            <div class="section-title">Grandeur</div>
+            <div class="toggle-btn">+</div>
+          </div>
+          <div class="section-content">
+            <p>
+              Embrace the majesty of fashion that speaks to your soul. Our
+              grandeur collection features statement pieces that command
+              attention and celebrate the beauty of confident, powerful
+              femininity.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="moments__right-panel">
+        <div class="image-container">
+          <div class="image-slide">
+            <img
+              src="../../assets/img/banner_9.jpg"
+              alt="Masterpiece Collection"
+              width="100%"
+              height="100%"
+              object-fit="cover"
+            />
+          </div>
+          <div class="image-slide active">
+            <img
+              src="../../assets/img/banner_10.jpg"
+              alt="Timeless Fashion"
+              width="100%"
+              height="100%"
+              object-fit="cover"
+            />
+          </div>
+          <div class="image-slide">
+            <img
+              src="../../assets/img/banner_8.jpg"
+              alt="Magnificent Style"
+              width="100%"
+              height="100%"
+              object-fit="cover"
+            />
+          </div>
+          <div class="image-slide">
+            <img
+              src="../../assets/img/banner_11.jpg"
+              alt="Grand Fashion"
+              width="100%"
+              height="100%"
+              object-fit="cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const sections = document.querySelectorAll(".section");
+  const imageSlides = document.querySelectorAll(".image-slide");
+  let isTransitioning = false;
+
+  function smoothTransition(targetIndex) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    const currentActive = document.querySelector(".image-slide.active");
+    if (currentActive) {
+      currentActive.classList.add("fade-out");
+    }
+    setTimeout(() => {
+      imageSlides.forEach((slide, index) => {
+        slide.classList.remove("active", "fade-out");
+        slide.style.transform = "";
+
+        if (index === targetIndex) {
+          slide.classList.add("active");
+          slide.style.transform = "";
+          slide.style.filter = "";
+        }
+      });
+
+      // setTimeout(() => {
+      isTransitioning = false;
+      // }, 400);
+    }, 300);
+  }
+
+  sections.forEach((section, index) => {
+    const header = section.querySelector(".section-header");
+    const content = section.querySelector(".section-content");
+    const title = section.querySelector(".section-title");
+    const toggleBtn = section.querySelector(".toggle-btn");
+
+    if (header && content && title && toggleBtn) {
+      header.addEventListener("click", () => {
+        const activeSections = Array.from(sections).filter((s) =>
+          s.classList.contains("active")
+        ).length;
+
+        const isActive = section.classList.contains("active");
+
+        if (isActive && activeSections <= 1) {
+          return;
+        }
+
+        sections.forEach((otherSection, otherIndex) => {
+          if (otherIndex !== index) {
+            otherSection.classList.remove("active");
+            const otherContent = otherSection.querySelector(".section-content");
+            const otherTitle = otherSection.querySelector(".section-title");
+            const otherToggleBtn = otherSection.querySelector(".toggle-btn");
+
+            if (otherContent) otherContent.classList.remove("active");
+            if (otherTitle) otherTitle.classList.remove("active");
+            if (otherToggleBtn) otherToggleBtn.textContent = "+";
+          }
+        });
+
+        if (isActive) {
+          section.classList.remove("active");
+          content.classList.remove("active");
+          title.classList.remove("active");
+          toggleBtn.textContent = "+";
+        } else {
+          section.classList.add("active");
+          content.classList.add("active");
+          title.classList.add("active");
+          toggleBtn.textContent = "−";
+
+          // Use smooth transition for image change
+          smoothTransition(index);
+        }
+      });
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (sections.length > 0) {
+      const activeSection = document.querySelector(".section.active");
+      if (activeSection) {
+        const activeIndex = Array.from(sections).indexOf(activeSection);
+        if (activeIndex !== -1) {
+          smoothTransition(activeIndex);
+        }
+      }
+    }
+  });
+</script>

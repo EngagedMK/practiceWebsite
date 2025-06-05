@@ -19,6 +19,33 @@
     <div id="include-banner"></div>
     <div id="include-customer"></div>
     <div id="include-ourProduct"></div>
+    <div id="include-specials"></div>
+    <div id="include-celebrate"></div>
+    <div id="include-product"></div>
+    <div id="include-moments"></div>
+    <div id="include-testimonials"></div>
+    <div id="include-faqs"></div>
+    <div id="include-footer"></div>
+
+    <div
+      style="
+        width: 60px;
+        height: 60px;
+        display: flex;
+        background-color: #0e85e0;
+        position: fixed;
+        justify-content: center;
+        align-items: center;
+        bottom: 35px;
+        right: 20px;
+        border-radius: 100% !important;
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.05) !important;
+        transition: transform 0.15s ease-in-out !important;
+        z-index: 9;
+      "
+    >
+      <img src="../assets/img/icon.png" width="30px" height="25px" />
+    </div>
 
     <script>
       async function includeHTML(file, elementId) {
@@ -62,6 +89,13 @@
       includeHTML("./components/banner.html", "include-banner");
       includeHTML("./components/customer.html", "include-customer");
       includeHTML("./components/ourProduct.html", "include-ourProduct");
+      includeHTML("./components/specials.html", "include-specials");
+      includeHTML("./components/celebrate.html", "include-celebrate");
+      includeHTML("./components/moments.html", "include-moments");
+      includeHTML("./components/testimonials.html", "include-testimonials");
+      includeHTML("./components/faqs.html", "include-faqs");
+      includeHTML("./components/footer.html", "include-footer");
+      includeHTML("./components/product.html", "include-product");
     </script>
   </body>
 </html>

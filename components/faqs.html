@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <div class="faqs">
+      <div>
+        <p class="testimonials__name">FAQS</p>
+        <p class="testimonials__describe">Frequently Asked Question</p>
+      </div>
+
+      <div class="faqs__right-panel">
+        <div class="faqs__section active">
+          <div class="faqs__section-header">
+            <div class="faqs__section-title">
+              What is your return and exchange policy?
+            </div>
+            <div class="faqs__toggle-btn">-</div>
+          </div>
+          <div class="faqs__section-content active">
+            <p>
+              We accept returns or exchanges within 30 days, as long as items
+              are unworn, in original condition with tags attached. Please
+              contact us for the return address.
+            </p>
+          </div>
+        </div>
+
+        <div class="faqs__section">
+          <div class="faqs__section-header">
+            <!-- <div class="faqs__section-number">2</div> -->
+            <div class="faqs__section-title">Do you ship internationally?</div>
+            <div class="faqs__toggle-btn">+</div>
+          </div>
+          <div class="faqs__section-content">
+            <p>
+              Yes, we offer international shipping. Shipping costs and delivery
+              times vary by location and will be calculated at checkout.
+            </p>
+          </div>
+        </div>
+
+        <div class="faqs__section">
+          <div class="faqs__section-header">
+            <!-- <div class="faqs__section-number">3</div> -->
+            <div class="faqs__section-title">
+              When will my order be shipped?
+            </div>
+            <div class="faqs__toggle-btn">+</div>
+          </div>
+          <div class="faqs__section-content">
+            <p>
+              Orders are usually processed within 1–3 business days. Once
+              shipped, you'll receive a confirmation email with tracking
+              details.
+            </p>
+          </div>
+        </div>
+
+        <div class="faqs__section">
+          <div class="faqs__section-header">
+            <!-- <div class="faqs__section-number">3</div> -->
+            <div class="faqs__section-title">
+              Can I make changes to my order after it's been placed?
+            </div>
+            <div class="faqs__toggle-btn">+</div>
+          </div>
+          <div class="faqs__section-content">
+            <p>
+              If your order hasn’t been shipped yet, we’ll do our best to help.
+              Please contact us as soon as possible for any changes.
+            </p>
+          </div>
+        </div>
+
+        <div class="faqs__section">
+          <div class="faqs__section-header">
+            <!-- <div class="faqs__section-number">3</div> -->
+            <div class="faqs__section-title">
+              How should I care for my items?
+            </div>
+            <div class="faqs__toggle-btn">+</div>
+          </div>
+          <div class="faqs__section-content">
+            <p>
+              Each product comes with care instructions on the label. We
+              recommend cold wash and air dry for most garments. For special
+              fabrics like satin or sequins, gentle care is advised.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const faqsSections = document.querySelectorAll(".faqs__section");
+
+  faqsSections.forEach((section, index) => {
+    const faqsHeader = section.querySelector(".faqs__section-header");
+    const faqsContent = section.querySelector(".faqs__section-content");
+    const faqsTitle = section.querySelector(".faqs__section-title");
+    const faqsToggleBtn = section.querySelector(".faqs__toggle-btn");
+
+    if (faqsHeader && faqsContent && faqsTitle && faqsToggleBtn) {
+      faqsHeader.addEventListener("click", () => {
+        const activeSections = Array.from(faqsSections).filter((s) =>
+          s.classList.contains("active")
+        ).length;
+
+        const isActive = section.classList.contains("active");
+
+        if (isActive && activeSections <= 1) {
+          return;
+        }
+
+        faqsSections.forEach((otherSection, otherIndex) => {
+          if (otherIndex !== index) {
+            otherSection.classList.remove("active");
+            const otherContent = otherSection.querySelector(
+              ".faqs__section-content"
+            );
+            const otherTitle = otherSection.querySelector(
+              ".faqs__section-title"
+            );
+            const otherToggleBtn =
+              otherSection.querySelector(".faqs__toggle-btn");
+
+            if (otherContent) otherContent.classList.remove("active");
+            if (otherTitle) otherTitle.classList.remove("active");
+            if (otherToggleBtn) otherToggleBtn.textContent = "+";
+          }
+        });
+
+        if (isActive) {
+          section.classList.remove("active");
+          faqsContent.classList.remove("active");
+          title.classList.remove("active");
+          toggleBtn.textContent = "+";
+        } else {
+          section.classList.add("active");
+          faqsContent.classList.add("active");
+          faqsTitle.classList.add("active");
+          faqsToggleBtn.textContent = "−";
+        }
+      });
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (faqsSections.length > 0) {
+      const activeSection = document.querySelector(".faqs__section.active");
+      if (activeSection) {
+        const activeIndex = Array.from(faqsSections).indexOf(activeSection);
+      }
+    }
+  });
+</script>

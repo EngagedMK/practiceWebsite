@@ -28,6 +28,16 @@
           <div class="s-button-prev">
             <i class="fa-solid fa-arrow-left s-button-icon"></i>
           </div>
+          <div
+            class="swiper-pagination"
+            style="
+              display: block;
+              margin: auto 0;
+              position: initial;
+              color: #999;
+              font-size: medium;
+            "
+          ></div>
           <div class="s-button-next">
             <i class="fa-solid fa-arrow-right s-button-icon"></i>
           </div>
@@ -213,7 +223,6 @@
           </div>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
     </div>
     <script>
       var swiper = new Swiper(".mySwiper", {
@@ -221,19 +230,15 @@
         spaceBetween: 1,
         pagination: {
           el: ".swiper-pagination",
-          clickable: true,
+          type: "fraction",
         },
         navigation: {
           nextEl: ".s-button-next",
           prevEl: ".s-button-prev",
         },
         breakpoints: {
-          640: {
+          300: {
             slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          768: {
-            slidesPerView: 3,
             spaceBetween: 10,
           },
           800: {

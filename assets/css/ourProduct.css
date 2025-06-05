@@ -1,3 +1,12 @@
+.limit__line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 .swiper {
   /* position: relative; */
   /* width: 100%; */
@@ -60,9 +69,10 @@
 }
 
 .ourProduct__name-sum {
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 300;
   margin-right: 16px;
+  margin-bottom: 12px;
   letter-spacing: 2px;
 }
 
@@ -84,4 +94,47 @@
 .s-button-next.swiper-button-disabled,
 .s-button-prev.swiper-button-disabled {
   color: #b2b1b1 !important;
+}
+
+@media screen and (max-width: 800px) {
+  .swiper {
+    height: 100%;
+    margin: 0 16px;
+  }
+
+  .ourProduct__name-sum {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  .ourProduct__describe-sum {
+    font-size: 25.6px;
+  }
+
+  .ourProduct__name {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .ourProduct__describe {
+    font-size: 17px;
+    font-weight: 400;
+  }
+
+  .ourProduct__core {
+    font-size: 17px;
+  }
+
+  .ourProduct__core-sale {
+    font-size: 14px;
+  }
+
+  .ourProduct__evaluate {
+    margin: 12px 0;
+  }
+
+  .s-button-icon {
+    margin: 0 10px;
+    font-size: large;
+  }
 }
