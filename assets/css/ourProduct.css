@@ -144,6 +144,10 @@
   opacity: 1;
 }
 
+.slide__hover-tag-mobule {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .swiper {
     height: 100%;
@@ -184,5 +188,33 @@
   .s-button-icon {
     margin: 0 10px;
     font-size: large;
+  }
+
+  .slide__hover-tag-mobule {
+    position: absolute;
+    z-index: 7;
+    bottom: 16px;
+    margin: 0;
+    right: 12px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #000;
+  }
+
+  .slide__hover-tag-mobule:hover {
+    position: absolute;
+    z-index: 3;
+    bottom: 16px;
+    margin: 0;
+    right: 12px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #646464;
   }
 }

@@ -448,3 +448,33 @@ document.addEventListener("DOMContentLoaded", () => {
   createPaginationSmaill();
   initCarouselSmaill();
 });
+
+function setupCardHoverProductEffect() {
+  const slideProducts = document.querySelectorAll(".product__img-smaill-card");
+  const buttonProducts = document.querySelectorAll(
+    ".slide__hover-tag-mobule-product"
+  );
+
+  slideProducts.forEach((slide) => {
+    slide.removeEventListener("mouseenter", slide._hoverHandler);
+    slide.removeEventListener("mouseleave", slide._hoverLeaveHandler);
+    const buttonProduct = slide.querySelector(
+      ".slide__hover-tag-mobule-product"
+    );
+    if (buttonProduct && window.innerWidth < 800) {
+      slide._hoverHandler = () => {
+        buttonProducts.forEach((btn) => btn.classList.remove("active"));
+        buttonProduct.classList.add("active");
+      };
+      slide._hoverLeaveHandler = () => {
+        buttonProduct.classList.remove("active");
+      };
+
+      slide.addEventListener("mouseenter", slide._hoverHandler);
+      slide.addEventListener("mouseleave", slide._hoverLeaveHandler);
+    }
+  });
+}
+
+window.addEventListener("resize", setupCardHoverProductEffect);
+window.addEventListener("DOMContentLoaded", setupCardHoverProductEffect);
