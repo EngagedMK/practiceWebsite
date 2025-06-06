@@ -1,7 +1,7 @@
 .moments__grid-container {
   display: grid;
   grid-template-columns: 5fr 7fr;
-  margin: 0 30px;
+  margin: 7% 30px;
 }
 
 .moments__left-panel {
