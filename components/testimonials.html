@@ -255,6 +255,7 @@
     carousel.classList.add("no-transition");
     carousel.scrollLeft = 0;
     carousel.classList.remove("no-transition");
+    updatePagination();
   }
 
   function goToSlide(index) {
@@ -263,7 +264,9 @@
     if (!firstCard) return;
 
     const scrollTo = index * (firstCard.offsetWidth * cardPerView);
+    carousel.classList.add("smooth-scroll");
     carousel.scrollLeft = scrollTo;
+    carousel.classList.remove("smooth-scroll");
     updatePagination();
   }
 
@@ -290,13 +293,13 @@
   const dragStart = (e) => {
     isDragging = true;
     carousel.classList.add("dragging");
-    startX = e.pageX || e.touches[0].pageX;
+    startX = e.pageX || (e.touches && e.touches[0].pageX);
     startScrollLeft = carousel.scrollLeft;
   };
 
   const dragging = (e) => {
     if (!isDragging) return;
-    const x = e.pageX || e.touches[0].pageX;
+    const x = e.pageX || (e.touches && e.touches[0].pageX);
     const newScrollLeft = startScrollLeft - (x - startX);
     if (
       newScrollLeft >= 0 &&
@@ -315,9 +318,28 @@
 
     const itemWidth = firstCard.offsetWidth * cardPerView;
     const scrollPosition = carousel.scrollLeft;
-    let nearestPage = Math.round(scrollPosition / itemWidth);
-    nearestPage = Math.max(0, Math.min(nearestPage, totalPages - 1));
-    carousel.scrollLeft = nearestPage * itemWidth;
+    const currentPage = Math.floor(scrollPosition / itemWidth);
+    const dragDistance = scrollPosition - startScrollLeft;
+    const threshold = itemWidth / 2; // Half the width of an item group
+
+    let targetPage = currentPage;
+
+    // If dragged more than half an item group, move to the next or previous page
+    if (Math.abs(dragDistance) > threshold) {
+      if (dragDistance > 0) {
+        // Dragged right (next page)
+        targetPage = Math.min(currentPage + 1, totalPages - 1);
+      } else {
+        // Dragged left (previous page)
+        targetPage = Math.max(currentPage - 1, 0);
+      }
+    }
+
+    // Smoothly snap to the target page
+    carousel.classList.add("smooth-scroll");
+    carousel.scrollLeft = targetPage * itemWidth;
+    carousel.classList.remove("smooth-scroll");
+
     updatePagination();
   };
 
@@ -337,7 +359,6 @@
   });
   wrapper.addEventListener("mouseleave", () => {
     isAutoPlay = true;
-    // autoPlay();
   });
 
   // Touch events for mobile
@@ -347,12 +368,13 @@
 
   // Responsive handling
   window.addEventListener("resize", () => {
+    calculateCardPerView();
     createPaginationDots();
     initCarousel();
-    updatePagination();
   });
 
   // Initialize everything
+  calculateCardPerView();
   createPaginationDots();
   initCarousel();
 </script>

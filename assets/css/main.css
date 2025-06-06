@@ -55,20 +55,38 @@ html {
 }
 
 .item2 button {
-  margin-top: 16px;
+  /* margin-top: 16px; */
   font-size: 1rem;
-  padding: 14px 32px;
-  border-radius: 99px;
-  border: none;
-  cursor: pointer;
+  line-height: 26px;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 100px;
+  padding-right: 40px;
+  padding-bottom: 13px;
+  padding-left: 40px;
+  padding-top: 13px;
 }
 
 .item2 button:hover {
-  margin-top: 16px;
   font-size: 1rem;
-  padding: 14px 32px;
-  border-radius: 99px;
-  border: none;
+  line-height: 26px;
+  letter-spacing: 0px;
+  text-transform: capitalize;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 100px;
+  padding-right: 40px;
+  padding-bottom: 13px;
+  padding-left: 40px;
+  padding-top: 13px;
   background-color: #000;
   color: #fff;
   cursor: pointer;
@@ -179,7 +197,7 @@ text:nth-child(2) {
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  margin: 4% 30px;
+  margin: 7% 30px;
 }
 
 .customer__collecton-grid {
@@ -244,7 +262,7 @@ text:nth-child(2) {
   display: flex;
   height: 70vh;
   gap: 10px;
-  margin: 28px 30px 0;
+  margin: 7% 30px 0;
 }
 
 .card {
@@ -464,7 +482,7 @@ text:nth-child(2) {
 .celebrate__grid-container {
   display: grid;
   grid-template-columns: 5fr 7fr;
-  margin: 5% 30px;
+  margin: 7% 30px;
 }
 
 .celebrate__name {
@@ -601,6 +619,14 @@ text:nth-child(2) {
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
+.carousel {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
 .carousel::-webkit-scrollbar {
   display: none;
 }
@@ -610,6 +636,29 @@ text:nth-child(2) {
 .carousel.dragging {
   scroll-snap-type: none;
   scroll-behavior: auto;
+  cursor: grabbing;
+  user-select: none; /* Prevent text selection during drag */
+}
+.carousel li {
+  flex: 0 0 calc(100% / 3); /* Default: 3 cards per view */
+  scroll-snap-align: start;
+  padding: 15px;
+  box-sizing: border-box;
+  min-width: calc(100% / 3); /* Ensure consistent width */
+}
+
+@media (max-width: 900px) {
+  .carousel li {
+    flex: 0 0 calc(100% / 2); /* 2 cards per view */
+    min-width: calc(100% / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel li {
+    flex: 0 0 100%; /* 1 card per view */
+    min-width: 100%;
+  }
 }
 .carousel.dragging .card {
   cursor: grab;
