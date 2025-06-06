@@ -721,4 +721,58 @@
     font-weight: 300;
     margin: 0 4px;
   }
+
+  .slide__hover-tag-mobule-product {
+    position: absolute;
+    z-index: 3;
+    bottom: 16px;
+    margin: 0;
+    right: 12px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #000;
+    opacity: 0;
+  }
+
+  .slide__hover-tag-mobule-product.active {
+    position: absolute;
+    z-index: 3;
+    bottom: 16px;
+    margin: 0;
+    right: 12px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #000;
+    opacity: 1;
+    animation: tranDownToUp 0.3s ease;
+  }
+
+  .slide__hover-tag-mobule-product:hover {
+    position: absolute;
+    z-index: 3;
+    bottom: 16px;
+    margin: 0;
+    right: 12px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #646464;
+  }
+
+  @keyframes tranDownToUp {
+    0% {
+      bottom: 0px;
+    }
+    100% {
+      bottom: 16px;
+    }
+  }
 }
