@@ -436,9 +436,13 @@
   top: 0;
 }
 
-/* .product__img-smaill-pagination {
+.product__img-smaill-pagination {
   display: none;
-} */
+}
+
+.product__img-smaill-pagination-name p {
+  margin: 6% 20px;
+}
 
 @media (max-width: 800px) {
   .product-container {
@@ -686,13 +690,15 @@
 
   /* Styles cho phân trang tùy chỉnh */
   .product__img-smaill-pagination {
-    display: block;
+    display: flex;
     /* margin-top: 20px; */
   }
 
   .product__img-smaill-pagination-name {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 70px;
   }
 
   .pagination-btn {
@@ -711,8 +717,8 @@
   }
 
   .pagination-current {
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin: 0 10px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    margin: 0 4px;
   }
 }
