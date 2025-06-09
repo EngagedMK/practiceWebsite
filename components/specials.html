@@ -9,7 +9,12 @@
     <div class="specials__grid-container">
       <div
         class="specials__grid-item1"
-        style="display: flex; flex-direction: column; padding: 24px 30px"
+        style="
+          display: flex;
+          flex-direction: column;
+          padding: 24px 30px;
+          justify-content: center;
+        "
       >
         <p class="specials__name">Specials</p>
         <p class="specials__describe">
@@ -80,14 +85,15 @@
           onclick="playVideo()"
           style="
             position: absolute;
-            top: 34%;
-            left: 36%;
+            top: 50%;
+            left: 50%;
             width: 120px;
             height: 120px;
             border: none;
             background: transparent;
             cursor: pointer;
             z-index: 2;
+            transform: translate(-50%, -50%);
           "
         >
           <img

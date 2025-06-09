@@ -44,9 +44,20 @@
         </div>
       </div>
       <div class="swiper-wrapper">
-        <div class="swiper-slide">
+        <div class="swiper-slide" id="slide__hover">
           <div style="position: relative">
             <img src="../../assets/img/banner_20.jpg" alt="2" />
+
+            <div class="slide__hover-tag">
+              <button class="swiper__button-hover">
+                <i class="fa-solid fa-plus"></i>
+                Quick Add
+              </button>
+            </div>
+
+            <div class="slide__hover-tag-mobule">
+              <i class="fa-regular fa-square-plus" style="color: #fff"></i>
+            </div>
           </div>
           <div style="position: absolute; z-index: 3; top: 0">
             <p
@@ -86,7 +97,20 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="../../assets/img/banner_21.webp" alt="2" />
+          <div style="position: relative">
+            <img src="../../assets/img/banner_21.webp" alt="2" />
+
+            <div class="slide__hover-tag">
+              <button class="swiper__button-hover">
+                <i class="fa-solid fa-plus"></i>
+                Quick Add
+              </button>
+            </div>
+
+            <div class="slide__hover-tag-mobule">
+              <i class="fa-regular fa-square-plus" style="color: #fff"></i>
+            </div>
+          </div>
           <div>
             <p class="ourProduct__name">GORGLITTER</p>
             <h2 class="ourProduct__describe">
@@ -110,7 +134,20 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="../../assets/img/banner_22.webp" alt="2" />
+          <div style="position: relative">
+            <img src="../../assets/img/banner_22.webp" alt="2" />
+
+            <div class="slide__hover-tag">
+              <button class="swiper__button-hover">
+                <i class="fa-solid fa-plus"></i>
+                Quick Add
+              </button>
+            </div>
+
+            <div class="slide__hover-tag-mobule">
+              <i class="fa-regular fa-square-plus" style="color: #fff"></i>
+            </div>
+          </div>
           <div>
             <p class="ourProduct__name">TIANZHU</p>
             <h2 class="ourProduct__describe">
@@ -134,7 +171,20 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="../../assets/img/banner_23.webp" alt="2" />
+          <div style="position: relative">
+            <img src="../../assets/img/banner_23.webp" alt="2" />
+
+            <div class="slide__hover-tag">
+              <button class="swiper__button-hover">
+                <i class="fa-solid fa-plus"></i>
+                Quick Add
+              </button>
+            </div>
+
+            <div class="slide__hover-tag-mobule">
+              <i class="fa-regular fa-square-plus" style="color: #fff"></i>
+            </div>
+          </div>
           <div>
             <p class="ourProduct__name">BebreezChic</p>
             <h2 class="ourProduct__describe">
@@ -160,6 +210,17 @@
         <div class="swiper-slide">
           <div style="position: relative">
             <img src="../../assets/img/banner_24.webp" alt="2" />
+
+            <div class="slide__hover-tag">
+              <button class="swiper__button-hover">
+                <i class="fa-solid fa-plus"></i>
+                Quick Add
+              </button>
+            </div>
+
+            <div class="slide__hover-tag-mobule">
+              <i class="fa-regular fa-square-plus" style="color: #fff"></i>
+            </div>
           </div>
           <div style="position: absolute; z-index: 3; top: 0">
             <p
@@ -199,7 +260,20 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img src="../../assets/img/banner_25.webp" alt="2" />
+          <div style="position: relative">
+            <img src="../../assets/img/banner_25.webp" alt="2" />
+
+            <div class="slide__hover-tag">
+              <button class="swiper__button-hover">
+                <i class="fa-solid fa-plus"></i>
+                Quick Add
+              </button>
+            </div>
+
+            <div class="slide__hover-tag-mobule">
+              <i class="fa-regular fa-square-plus" style="color: #fff"></i>
+            </div>
+          </div>
           <div>
             <p class="ourProduct__name">Artykey</p>
             <h2 class="ourProduct__describe">
@@ -250,3 +324,31 @@
     </script>
   </body>
 </html>
+
+<script>
+  function setupCardHoverEffect() {
+    const slides = document.querySelectorAll(".swiper-slide");
+    const buttons = document.querySelectorAll(".slide__hover-tag");
+
+    slides.forEach((slide) => {
+      slide.removeEventListener("mouseenter", slide._hoverHandler);
+      slide.removeEventListener("mouseleave", slide._hoverLeaveHandler);
+      const button = slide.querySelector(".slide__hover-tag");
+      if (button && window.innerWidth > 800) {
+        slide._hoverHandler = () => {
+          buttons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+        };
+        slide._hoverLeaveHandler = () => {
+          button.classList.remove("active");
+        };
+
+        slide.addEventListener("mouseenter", slide._hoverHandler);
+        slide.addEventListener("mouseleave", slide._hoverLeaveHandler);
+      }
+    });
+  }
+
+  window.addEventListener("resize", setupCardHoverEffect);
+  window.addEventListener("DOMContentLoaded", setupCardHoverEffect);
+</script>

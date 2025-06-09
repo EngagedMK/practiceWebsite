@@ -96,6 +96,58 @@
   color: #b2b1b1 !important;
 }
 
+.swiper__button-hover {
+  margin-top: 0 24px;
+  font-size: 1.1rem;
+  padding: 14px 8px;
+  border-radius: 99px;
+  border: none;
+  width: 90%;
+  background-color: #1f1f1f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.swiper__button-hover:hover {
+  margin-top: 0 24px;
+  font-size: 1.1rem;
+  padding: 14px 8px;
+  border-radius: 99px;
+  border: none;
+  width: 90%;
+  background-color: #1f1f1f;
+  color: #fff;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.slide__hover-tag {
+  position: absolute;
+  z-index: 3;
+  bottom: 20px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slide__hover-tag.active {
+  position: absolute;
+  z-index: 3;
+  bottom: 20px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+}
+
+.slide__hover-tag-mobule {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .swiper {
     height: 100%;
@@ -136,5 +188,33 @@
   .s-button-icon {
     margin: 0 10px;
     font-size: large;
+  }
+
+  .slide__hover-tag-mobule {
+    position: absolute;
+    z-index: 7;
+    bottom: 16px;
+    margin: 0;
+    right: 12px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #000;
+  }
+
+  .slide__hover-tag-mobule:hover {
+    position: absolute;
+    z-index: 3;
+    bottom: 16px;
+    margin: 0;
+    right: 12px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #646464;
   }
 }
